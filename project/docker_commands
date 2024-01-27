@@ -1,0 +1,50 @@
+## Docker commands used to build the application 
+# pwd: ~/Cloud_Native/nd064_course_1/project
+# docker build -t techtrends:latest .
+
+## Docker commands used to run the application
+# container_id=$(docker run --rm -p 7111:3111 -d techtrends:latest)
+
+## Docker commands used to get the application logs
+# docker logs $container_id
+
+## Logs from the container running the TechTrends application
+ * Serving Flask app 'app' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://172.17.0.2:3111/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 631-191-001
+192.168.65.1 - - [27/Jan/2024 18:40:51] "GET / HTTP/1.1" 200 -
+192.168.65.1 - - [27/Jan/2024 18:40:51] "GET /static/css/main.css HTTP/1.1" 200 -
+192.168.65.1 - - [27/Jan/2024 18:40:51] "GET /favicon.ico HTTP/1.1" 404 -
+192.168.65.1 - - [27/Jan/2024 18:40:56] "GET / HTTP/1.1" 200 -
+192.168.65.1 - - [27/Jan/2024 18:40:56] "GET /static/css/main.css HTTP/1.1" 304 -
+192.168.65.1 - - [27/Jan/2024 18:41:02] "GET / HTTP/1.1" 200 -
+192.168.65.1 - - [27/Jan/2024 18:41:02] "GET /apple-touch-icon-precomposed.png HTTP/1.1" 404 -
+192.168.65.1 - - [27/Jan/2024 18:41:02] "GET /apple-touch-icon.png HTTP/1.1" 404 -
+192.168.65.1 - - [27/Jan/2024 18:41:02] "GET /favicon.ico HTTP/1.1" 404 -
+192.168.65.1 - - [27/Jan/2024 18:41:02] "GET /apple-touch-icon-precomposed.png HTTP/1.1" 404 -
+192.168.65.1 - - [27/Jan/2024 18:41:02] "GET /apple-touch-icon.png HTTP/1.1" 404 -
+192.168.65.1 - - [27/Jan/2024 18:41:02] "GET /favicon.ico HTTP/1.1" 404 -
+192.168.65.1 - - [27/Jan/2024 18:41:02] "GET / HTTP/1.1" 200 -
+192.168.65.1 - - [27/Jan/2024 18:41:02] "GET /apple-touch-icon-precomposed.png HTTP/1.1" 404 -
+192.168.65.1 - - [27/Jan/2024 18:41:02] "GET /apple-touch-icon.png HTTP/1.1" 404 -
+192.168.65.1 - - [27/Jan/2024 18:41:02] "GET /favicon.ico HTTP/1.1" 404 -
+192.168.65.1 - - [27/Jan/2024 18:41:02] "GET /apple-touch-icon-precomposed.png HTTP/1.1" 404 -
+192.168.65.1 - - [27/Jan/2024 18:41:02] "GET /apple-touch-icon.png HTTP/1.1" 404 -
+192.168.65.1 - - [27/Jan/2024 18:41:02] "GET /favicon.ico HTTP/1.1" 404 -
+[2024-01-27 18:41:32,949] INFO in app: Accessed existing title KubeCon + CloudNativeCon 2021
+192.168.65.1 - - [27/Jan/2024 18:41:32] "GET /2 HTTP/1.1" 200 -
+192.168.65.1 - - [27/Jan/2024 18:41:32] "GET /static/css/main.css HTTP/1.1" 304 -
+192.168.65.1 - - [27/Jan/2024 18:41:47] "GET /create HTTP/1.1" 200 -
+192.168.65.1 - - [27/Jan/2024 18:41:47] "GET /static/css/main.css HTTP/1.1" 304 -
+[2024-01-27 18:43:01,275] INFO in app: New article created. The title of the article is Good Morning
+192.168.65.1 - - [27/Jan/2024 18:43:01] "POST /create HTTP/1.1" 302 -
+192.168.65.1 - - [27/Jan/2024 18:43:01] "GET / HTTP/1.1" 200 -
+192.168.65.1 - - [27/Jan/2024 18:43:01] "GET /static/css/main.css HTTP/1.1" 304 -

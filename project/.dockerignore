@@ -1,0 +1,10 @@
+# Ignore everything
+*
+
+# Allow files and directories
+!techtrends
+
+# Ignore unnecessary files inside allowed directories
+# This should go after the allowed directories
+**/.venv
+**/database.db
