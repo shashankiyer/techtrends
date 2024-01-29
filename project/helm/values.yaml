@@ -5,6 +5,7 @@ image:
   repository: iyershashank/techtrends
   tag: latest
   pull_policy: IfNotPresent
+  name: techtrends
 
 replicaCount: 1
 
