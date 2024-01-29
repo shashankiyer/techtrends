@@ -17,24 +17,22 @@ spec:
       - image: {{ .Values.image.name }}:{{ .Values.image.tag }}
         imagePullPolicy: {{ .Values.image.pull_policy }}
         name: {{ .Values.image.name }}
-	ports:
-	- containerPort: {{ .Values.containerPort }}
-	resources:
-	  requests:
-	    cpu: {{ .Values.resources.requests.cpu }}
-	    memory: {{ .Values.resources.requests.memory }}
-	  limits:
+        ports:
+        - containerPort: {{ .Values.containerPort }}
+        resources:
+          requests:
+            cpu: {{ .Values.resources.requests.cpu }}
+            memory: {{ .Values.resources.requests.memory }}
+          limits:
             cpu: {{ .Values.resources.limits.cpu }}
             memory: {{ .Values.resources.limits.memory }}
-	livenessProbe:
-	  httpGet:
-	    path: {{ .Values.livenessProbe.path }}
-	    port: {{ .Values.livenessProbe.port }}
-	    initialDelaySeconds: 3
+        livenessProbe:
+          httpGet:
+            path: {{ .Values.livenessProbe.path }}
+            port: {{ .Values.livenessProbe.port }}
+            initialDelaySeconds: 3
             periodSeconds: 5
         readinessProbe:
           httpGet:
             path: {{ .Values.readinessProbe.path }}
             port: {{ .Values.readinessProbe.port }}
-
-
