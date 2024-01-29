@@ -30,7 +30,8 @@ def get_post(post_id):
     connection = get_db_connection()
     post = connection.execute("SELECT * FROM posts WHERE id = ?", (post_id,)).fetchone()
     connection.close()
-    app.logger.info(f"Accessed existing title {post['title']}")
+    if post is not None and "title" in post.keys():
+        app.logger.info(f"Accessed existing title {post['title']}")
     return post
 
 
@@ -63,7 +64,6 @@ def metrics():
     connection = get_db_connection()
     all_post = connection.execute("SELECT * FROM posts")
     total_posts = len(all_post.fetchall())
-    app.logger.info(dir(all_post))
 
     response = app.response_class(
         response=json.dumps(
