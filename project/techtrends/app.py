@@ -12,10 +12,14 @@ from flask import (
 )
 from werkzeug.exceptions import abort
 
+db_connection_count = 0
+
 
 # Function to get a database connection.
 # This function connects to database with the name `database.db`
 def get_db_connection():
+    global db_connection_count
+    db_connection_count += 1
     connection = sqlite3.connect("database.db")
     connection.row_factory = sqlite3.Row
     return connection
@@ -58,22 +62,13 @@ def status():
 def metrics():
     connection = get_db_connection()
     all_post = connection.execute("SELECT * FROM posts")
-    total_posts = all_post.rowcount
-    num_connections_sql = """
-        SELECT 
-            COUNT(dbid) as TotalConnections
-        FROM
-            sys.sysprocesses
-        WHERE 
-            dbid > 0
-    """
-    num_connections = connection.execute(num_connections_sql)
-    connection.close()
+    total_posts = len(all_post.fetchall())
+    app.logger.info(dir(all_post))
 
     response = app.response_class(
         response=json.dumps(
             {
-                "db_connection_count": num_connections,
+                "db_connection_count": db_connection_count,
                 "post_count": total_posts,
             }
         ),
