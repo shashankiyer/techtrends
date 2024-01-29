@@ -1,0 +1,16 @@
+namespace:
+  name: prod
+ 
+image:
+  pullPolicy: Always
+
+replicaCount: 5
+
+resources:
+  requests:
+    cpu: 350m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 256Mi
+
