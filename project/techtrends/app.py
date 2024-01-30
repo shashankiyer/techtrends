@@ -125,14 +125,18 @@ def create():
 
 # start the application on port 3111
 if __name__ == "__main__":
+    logging_formatter = logging.Formatter("%(asctime)s - %(levelname)s: %(message)s")
+
     stdout_logger = logging.StreamHandler(sys.stdout)
     stdout_logger.setLevel(logging.DEBUG)
-    stdout_logger.setFormatter("%(asctime)s - %(levelname)s: %(message)s")
+    stdout_logger.setFormatter(logging_formatter)
     app.logger.addHandler(stdout_logger)
 
     stderr_logger = logging.StreamHandler(sys.stderr)
     stderr_logger.setLevel(logging.ERROR)
-    stderr_logger.setFormatter("%(asctime)s - %(levelname)s: %(message)s")
+    stderr_logger.setFormatter(logging_formatter)
     app.logger.addHandler(stderr_logger)
 
-    app.run(host="0.0.0.0", port="3111", debug=True)
+    app.logger.setLevel(logging.DEBUG)
+
+    app.run(host="0.0.0.0", port="3111")
