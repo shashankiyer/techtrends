@@ -1,4 +1,6 @@
+import logging
 import sqlite3
+import sys
 
 from flask import (
     Flask,
@@ -123,4 +125,14 @@ def create():
 
 # start the application on port 3111
 if __name__ == "__main__":
+    stdout_logger = logging.StreamHandler(sys.stdout)
+    stdout_logger.setLevel(logging.DEBUG)
+    stdout_logger.setFormatter("%(asctime)s - %(levelname)s: %(message)s")
+    app.logger.addHandler(stdout_logger)
+
+    stderr_logger = logging.StreamHandler(sys.stderr)
+    stderr_logger.setLevel(logging.ERROR)
+    stderr_logger.setFormatter("%(asctime)s - %(levelname)s: %(message)s")
+    app.logger.addHandler(stderr_logger)
+
     app.run(host="0.0.0.0", port="3111", debug=True)
